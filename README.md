@@ -128,3 +128,188 @@ var letra : Char
 letra = 'A'
 ```
 
+### Booleanos
+
+Las variables booleanas se usan con letras minusculas y al hacerse explícitas se usa la palabra clave **Boolean**
+
+```kotlin
+var soltero : Boolean = true
+```
+
+### Cadenas
+
+Los tipos de datos cadena o String, nos permite utilizan un gran tipo de datos que podemos convertir a unos en específicos.
+
+```kotlin
+var cadena : String = "Hola soy una cadena"
+```
+
+> La cadena siempre debe colocarse entre comillas dobles. Las comillas simples se usan para caracteres (Char)
+
+
+### Cadeneas null
+
+Las cadenas en Kotlin no podemos dejarlas como nulos. 
+
+```kotlin
+var cadena : String
+cadena = null // No se puede dejar una cadena como nula.
+```
+
+
+## Funciones
+
+### Definir una función
+
+Las funciones se definen con la palabra reservada **fun** que hace referencia a _function_
+
+```
+// Estructura de una función tipo void
+fun readLine() {
+        
+}
+```
+
+
+### Funciones con parámetros
+
+Em Kotlin, los parámetros de las funciones no se pueden modificar. Se puede decir que son del tipo __val__ por defecto. 
+
+```kotlin
+fun readLine(x:Int, y:String){
+
+}
+```
+
+
+### Regresando valores
+
+Las **funciones** de acuerdo con la programación regresan valores. Los **métodos** no regresan un valor, solamente ejecutan un procedimiento.
+
+```kotlin
+fun readLine(x: Int, y:String) : Int {
+  return x*y.toInt()
+}
+```
+
+### Kotlin - Unit
+
+El equivalente al _void_ es la palabra reservada _**Unit**_. Lo que le indica que la función no regresará nada.
+
+Por defecto, si no colocamos la palabra unit, Kotlin lo toma como Unit
+
+```kotlin
+fun readLine(x:Int, y:Int) : Unit {
+
+}
+
+// Esta funcion es igual a la anterior. Kotlin la reconoce de la misma forma.
+fun readLine(x:Int, y:Int) {
+  
+}
+```
+
+### Funciones con parámetros por defecto
+
+```kotlin
+fun sumar(x:Int=1, y:Int=1) : Int {
+    return x+y
+}
+
+println(sumar(1,3))
+println(sumar())
+```
+
+
+### Funciones con parámetros con nombre
+
+En kotlin, podemos indicarle el nombre del parámetro al cual queremos pasarle el valor en el argumento, como se muestra en el siguiente ejemplo.
+
+```kotlin
+fun date(dia:Int, mes:Int, anio:Int, nombre:String, apellido:String){
+
+}
+
+date(dia=1, mes=6, anio = 2020, nombre = "", apellido = "")
+```
+
+
+### Funciones miembro
+
+Una función miembro son las que ya se encuentran predefinidas en los tipos de datos o incluidas en el propio lenguaje
+
+```kotlin
+var dato : String = "johan"
+println(dato.capitalize())  // Imprime Johan
+```
+
+### Funciones expresiones simples
+
+Estas funciones debido a su simplicidad se pueden escibir en una sola línea
+
+```kotlin
+fun square(n:Int) : Int {
+  return n*n
+}
+println(square(2))
+
+
+// Definiendo la función en una sola línea
+fun square(n:Int) = n*n
+```
+
+> No todas las funciones se pueden escribir en expresión simple.
+
+
+### Vararg
+
+**var** variables y **arg** argumentos. En muchas ocasiones necesitamos funciones que no tengan una cantidad específica de parámetros.
+
+```kotlin
+fun cadenas(vararg datos:String) {
+  // Foreach en kotlin
+  for (cadena in datos) {
+    println(cadena)
+  }
+}
+
+cadenas("H", "Johan", "Mosquera")
+```
+
+El **vararg** permite recibir una cantidad indefinida de parámetros de un determinado tipo de dato.
+
+
+### Funciones genéricas
+
+Las funciones genéricas permiten trabajar el dato sin importar el tipo de dato pasado por parámetro.
+
+La función recibe cualquier tipo de dato
+
+```kotlin
+fun <T>numeros(dato:T){
+  println(dato)
+}
+
+numeros(true)
+numeros(9)
+numeros("Hola")
+```
+
+
+## Ciclos
+
+### Ciclo For
+
+La **lista** en kotlin se define usando la palabra clave **`listOf()`**, de esta forma creamos una lista de datos.
+
+```kotlin
+var items = listOf("Juan","Maria","Johan")
+for (item in items.indices){
+    println("El nombre del item es $item")
+}
+
+for (posicion in items.indices){
+  println("En la posicion $posicion el nombre es ${items[posicion]}")
+}
+```
+
