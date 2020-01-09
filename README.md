@@ -313,3 +313,237 @@ for (posicion in items.indices){
 }
 ```
 
+
+### Manejo del `for` con `step` y `downTo`
+
+```kotlin
+// For del 1 al 20
+for (x in 1..20){
+  println(x)
+}
+```
+
+- **step** Es el paso, indica en qué cantidad avanzará la iteración
+
+```kotlin
+for (x in 1..20 step 2){
+  println(x)
+}
+```
+
+
+- **down** Hacemos un retroceso, es decir nos devolvemos
+
+```kotlin
+for (x in 20 downTo 1){
+  println(x)
+}
+```
+
+
+### Ciclo while
+
+Es otra estructura repetitiva.Es similar a otros lenguajes de programación.
+
+```kotlin
+var x = 1
+while(x < 10){
+  println(x)
+  x++
+}
+```
+
+### Ciclo Do While
+
+Es otro tipo de estructura repetitiva, que garantiza  que el bloque de código sea leido al menos la primera vez.
+
+```kotlin
+var x = 1
+do {
+  println(x)
+  x++
+} while (x < 10)
+```
+
+
+## Clases en Kotlin
+
+### Propiedades de clase
+
+Las propiedades son variables que definen las características en los objetos. _**Las propiedades se deben inicializar**_
+
+```kotlin
+class Libro {
+
+  var nombre:String = ""
+  var autor:String = ""
+  var paginas:Int = 1
+  var historia:Boolean = false
+
+}
+```
+
+### Métodos
+
+En la programación orientada a objetos, las funciones que se declaren en las clases se les denomina **métodos**
+
+```kotlin
+class Libro {
+
+  var nombre:String = ""
+  var autor:String = ""
+  var paginas:Int = 1
+  var historia:Boolean = false
+
+  fun prestar(libro:String, dias:Int): Int{
+      println("Se ha prestado el libro ${libro} por ${dias} dias")
+      return dias;
+  }
+
+}
+```
+
+### Constructor en kotlin
+
+Es el método que se llama inmediatamente cuando se instancia la clase. Es útil para inicializar valores.
+
+Para definir los parámetros en una clase a través de un constructor, utilizamos la palabra **constructor** enseguida del nombres de la clase.
+
+```kotlin
+class Libro constructor(nombre:String, autor:String, paginas:Int, editorial:String) {
+
+  var nombre:String = ""
+  var autor:String = ""
+  var paginas:Int = 1
+  var editorial:String = ""
+  var historia:Boolean = false
+
+  fun prestar(libro:String, dias:Int): Int{
+      println("Se ha prestado el libro ${libro} por ${dias} dias")
+      return dias;
+  }
+
+}
+```
+
+También podríamos definir la clase como se muestra a continuación si no se necesita anotaciones especiales.
+
+```kotlin
+class Libro (nombre:String, autor:String, paginas:Int, editorial:String) {
+  /**
+    Lo que lleva la clase
+  */
+}
+```
+
+
+### Clases **`init`**
+
+En kotlin el bloque llamado **init** siempre se va a ejecutar en una clase.
+
+```kotlin
+class miClasesita {
+
+  init {
+    // Siempre se ejecuta
+  }
+
+}
+```
+
+En la documentación oficial dice que puede ser considerado como un constructor, pero NO es un constructor, es un bloque de inicialización.
+
+```kotlin
+class Libro constructor(nombre:String, autor:String, paginas:Int, editorial:String) {
+
+  var nombre:String = ""
+  var autor:String = ""
+  var paginas:Int = 1
+  var editorial:String = ""
+  var historia:Boolean = false
+
+  init {
+    println("El libro ${nombre} tiene ${paginas} paginas")
+  }
+
+  fun prestar(libro:String, dias:Int): Int{
+      println("Se ha prestado el libro ${libro} por ${dias} dias")
+      return dias;
+  }
+
+}
+```
+
+### Constructores secundarios
+
+Los constructores secundarios se refiere cuando se definen más de un constructor.
+
+```kotlin
+class Libro(autor:String){
+
+  var nombre:String = ""
+  var autor:String = ""
+  var paginas:Int = 0
+  var editorial:String = ""
+
+  init {
+    println("El libro es ${libro}")
+  }
+
+  constructor(autor:String, paginas:Int): this(autor) {
+    println("Constructor 2")
+  }
+
+}
+```
+
+Con **constructor** definimos los constructores secundarios pero siempre debemos pasarle por parámetro el valor al constructor principal.
+
+
+### :start: Crear un objeto
+
+Para instanciar un objeto solo se crea la variable y se coloca el nombre de la clase que modelará el objeto.
+
+_Main.kt_
+```kotlin
+var libro = Libro("7 hábitos de la gente altamente efectiva", "Steven")
+```
+
+_Libro.kt_
+```kotlin
+class Libro constructor(nombre:String, autor:String) {
+
+    var nombre:String = ""
+    var autor:String = ""
+    var paginas:Int = 1
+    var editorial:String = ""
+    var historia:Boolean = false
+
+    init {
+        println("El libro ${nombre} tiene ${paginas} paginas")
+    }
+
+    constructor(nombre: String, autor:String, paginas:Int): this(nombre, autor) {
+        println("Constructor 2")
+    }
+
+    fun prestar(libro:String, dias:Int): Int{
+        println("Se ha prestado el libro ${libro} por ${dias} dias")
+        return dias;
+    }
+
+}
+```
+
+
+## ¿Qué aporta Kotlin que no aporte JAVA?
+
+**Simplicidad** Reduce en gran medida la cantidad de código por lo que: A menos cantidad de código, menor probabilidad de errores.
+
+- **Características básicas**
+  - Conciso
+  - Seguro (Adios a los NPE)
+  - Pragmático
+  - No penaliza el rendimiento
+  - Interoperabilidad con Java
+  - Programación funcional

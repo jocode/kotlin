@@ -62,4 +62,8 @@ fun main(args : Array<String>){
     for (posicion in items.indices){
         println("En la posicion $posicion el nombre es ${items[posicion]}")
     }
+
+    // Objetos y clases
+
+    var libro = Libro("7 hábitos de la gente altamente efectiva", "Steven")
 }
